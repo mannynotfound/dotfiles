@@ -62,9 +62,6 @@
   # List contributors with number of commits
   contributors = shortlog --summary --numbered
 
-
-  lr="for i in ./*; do echo \"\e[1;32m$i\e[0m\" && git --git-dir=$i/.git fetch && git --git-dir=$i/.git --work-tree=$i merge origin/master | grep -v \"Already up-to-date.\"; done;"
-
   # Merge GitHub pull request on top of the current branch or,
   # if a branch name is specified, on top of the specified branch
   mpr = "!f() { \
