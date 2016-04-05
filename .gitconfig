@@ -19,9 +19,10 @@
   c = clone --recursive
 
   # Commit all changes
-  ca = !git add -A && git commit -av
+  ca = "!git add -A && git commit -av"
 
-  ac="git add -A && git commit -m $1"
+  # Commit all changes
+  gac = "!git add -A && git commit -m $1"
 
   # Switch to a branch, creating it if necessary
   go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"

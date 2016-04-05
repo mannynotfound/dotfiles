@@ -128,3 +128,11 @@ alias reload="exec $SHELL -l"
 # Fun Matrix Effect
 alias matrix='LC_ALL=C tr -c "[:digit:]" " " < /dev/urandom | dd cbs=$COLUMNS conv=unblock | GREP_COLOR="1;32" grep --color "[^ ]"'
 
+# Custom Git Aliases
+alias gs='git status'
+alias gd='git diff'
+alias ga='git add . -A'
+alias gc='git commit -m'
+alias gac='git add -A && git commit -m $1'
+alias gp='git push origin HEAD'
+alias gpull='git pull origin HEAD'
