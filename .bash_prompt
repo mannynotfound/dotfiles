@@ -4,14 +4,18 @@ function parse_git_branch () {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
+if [ -n "$SSH_CLIENT" ]; then text=" ssh-session"
+fi
+#export PS1='\[\e[1;32m\]\u@\h:\w${text}$\[\e[m\] '
+
 ###### COLORS
 RED="\[\033[0;31m\]"
 YELLOW="\[\033[0;33m\]"
 GREEN="\[\033[0;32m\]"
-LIGHT_BLUE="\[\033[0;29m\]"
+GREY="\[\033[0;29m\]"
 PINK="\[\033[1;31m\]"
 
-PS1="$PINK ❤ $RED \w$YELLOW\$(parse_git_branch)$LIGHT_BLUE "
+PS1="$RED ❤  $GREEN\u $PINK\w${text}$YELLOW\$(parse_git_branch)$GREY "
 export PS1;
 
 PS2="\[${yellow}\]→ \[${reset}\]";
