@@ -4,12 +4,12 @@ source ~/.emoji-prompt.sh
 
 prompt_command () {
     if [ $? -eq 0 ]; then # set an error string for the prompt, if applicable
-        ERRPROMPT=" "
+        ERRPROMPT=""
     else
-        ERRPROMPT='->($?) '
+        ERRPROMPT=' ->($?) '
     fi
     if [ "\$(type -t __git_ps1)" ]; then # if we're in a Git repo, show current branch
-        BRANCH="\$(__git_ps1 '[ %s ]')"
+        BRANCH="\$(__git_ps1 '[%s]')"
     fi
     local GREEN="\[\033[0;32m\]"
     local CYAN="\[\033[0;36m\]"
@@ -24,8 +24,7 @@ prompt_command () {
     # return color to Terminal setting for text color
     local DEFAULT="\[\033[0;39m\]"
     # set the titlebar to the last 2 fields of pwd
-    export PS1=" $(CURRENT_EMOJI) ${GREEN}\u${GREEN}@${GREEN}\
-\h${RED} $ERRPROMPT${GRAY}\
-\w${YELLOW} ${BRANCH}${DEFAULT} $ "
+    export PS1=" $(CURRENT_EMOJI)${GREEN}\u\
+${RED}$ERRPROMPT${GRAY}\w${YELLOW}${BRANCH}${DEFAULT} $ "
 }
 PROMPT_COMMAND=prompt_command
